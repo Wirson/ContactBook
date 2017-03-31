@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Contact:show{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Contact:show page</h1>
+
+    <a href="{{ path('app_contact_showall') }}"><button>Back to contact list</button></a>
+    <a href="{{ path('app_contact_new') }}"><button>Add new contact</button></a>
+    <a href="{{ path('app_contact_update', {'id': contact.id}) }}"><button>Modify current contact</button></a>
+    <a href="{{ path('app_contact_delete', {'id': contact.id}) }}"><button>Delete current contact</button></a>
+    <div>
+        <h1>{{ contact.name }} {{ contact.surname }}</h1>
+        <p>{{ contact.description }}</p>
+    </div>
+    <div>
+        <h3>Addresses</h3>
+        {% for address in contact.address %}
+            {{ address.city }} {{ address.street }}<br>
+            {{ address.homeNum }} {{ address.flatNum }}<br>
+        {% else %}
+        No addresses
+        {% endfor %}
+    </div>
+    <div>
+        <h3>E-mail addresses</h3>
+        {% for email in contact.email %}
+            {{ email.email }} {{ email.type}}<br>
+        {% else %}
+            Empty
+        {% endfor %}
+    </div>
+    <div>
+        <h3>Phone numbers</h3>
+        {% for phone in contact.phone %}
+            {{ phone.number }} {{ phone.type }}<br>
+        {% else %}
+            Empty
+        {% endfor %}
+    </div>
+{% endblock %}

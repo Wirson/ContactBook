@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Contact:update{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Contact:update page</h1>
+    <a href="{{ path('app_contact_showall') }}"><button>Show all contacts</button></a>
+    <a href="{{ path('app_address_add', {'contactId': id}) }}"><button>Add contact address</button></a>
+    <a href="{{ path('app_email_add', {'contactId': id}) }}"><button>Add contact E-mail</button></a>
+    <a href="{{ path('app_phone_add', {'contactId': id}) }}"><button>Add contact phone</button></a>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Save">
+    {{ form_end(form) }}
+{% endblock %}

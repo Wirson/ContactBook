@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Contact:showAll{% endblock %}
+
+{% block body %}
+    <h1>Show All Contacts</h1>
+        <a href="{{ path('app_contact_new') }}"><button>Add new Contact</button></a>
+        {% for contact in contacts %}
+            <div>
+                <a href="{{ path('app_contact_show', {'id': contact.id }) }}">{{ contact.name }}</a>
+                {{ contact.surname }}
+                <a href="{{ path('app_contact_delete', {'id': contact.id }) }}"><button>Delete contact</button></a>
+                <a href="{{ path('app_contact_update', {'id': contact.id }) }}"><button>Edit contact</button></a>
+                <br>
+                {{ contact.description }}<br><br>
+            </div>
+        {% else %}
+            No contacts
+        {% endfor %}
+{% endblock %}
